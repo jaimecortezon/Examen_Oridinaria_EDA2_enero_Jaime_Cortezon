@@ -1,0 +1,71 @@
+
+import networkx as nx
+
+# Creamos el grafo
+G = nx.Graph()
+
+# Añadimos los nodos (planetas) al grafo
+G.add_node("Alderaan")
+G.add_node("Endor")
+G.add_node("Dagobah")
+G.add_node("Hoth")
+G.add_node("Tatooine")
+G.add_node("Kamino")
+G.add_node("Naboo")
+G.add_node("Mustafar")
+G.add_node("Scarif")
+G.add_node("Bespin")
+G.add_node("Planeta1")
+G.add_node("Planeta2")
+G.add_node("Planeta3")
+G.add_node("Planeta4")
+G.add_node("Planeta5")
+G.add_node("Planeta6")
+G.add_node("Planeta7")
+
+## genere al menos 4 aristas para cada uno de los planetas del grafo, no puede haber nodos con arcos a sí mismo
+import random
+
+# Recorremos todos los nodos del grafo
+for node in G.nodes():
+  # Añadimos al menos 4 enlaces a cada nodo
+  for i in range(4):
+    # Elegimos al azar otro nodo al que conectar el nodo actual
+    other_node = random.choice(list(G.nodes()))
+    # Si el nodo al que queremos conectar es el mismo, volvemos a elegir
+    while other_node == node:
+      other_node = random.choice(list(G.nodes()))
+    # Añadimos el enlace entre el nodo actual y el nodo elegido
+    G.add_edge(node, other_node)
+
+## encuentre el árbol de expansión mínima en cuanto a costos para recorrer todos los planetas
+import networkx as nx
+
+# Creamos el grafo de los planetas de Star Wars y añadimos algunos enlaces
+G = nx.Graph()
+G.add_node("Alderaan")
+G.add_node("Endor")
+G.add_node("Dagobah")
+G.add_node("Hoth")
+G.add_node("Tatooine")
+G.add_edge("Alderaan", "Hoth")
+G.add_edge("Endor", "Tatooine")
+G.add_node("Kamino")
+G.add_node("Naboo")
+G.add_node("Mustafar")
+G.add_node("Scarif")
+G.add_node("Bespin")
+G.add_node("Planeta1")
+G.add_node("Planeta2")
+G.add_node("Planeta3")
+G.add_edge("Planeta1", "Planeta3")
+G.add_node("Planeta4")
+G.add_node("Planeta5")
+G.add_edge("Planeta4", "Planeta5")
+G.add_node("Planeta6")
+G.add_node("Planeta7")
+
+# Asignamos pesos a los enlaces del grafo"
+nx.set_edge_attributes(G, {"Alderaan-Hoth": 5, "Endor-Tatooine": 3, "Planeta1-Planeta3": 2, "Planeta4-Planeta5": 1})
+# Calculamos el árbol de expansión mínima
+mst = nx.minimum_spanning_tree(G)
