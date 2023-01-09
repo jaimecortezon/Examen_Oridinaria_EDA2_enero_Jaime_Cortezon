@@ -7,6 +7,10 @@ class Stormtrooper:
         self.rango = rango
         print(f"Stormtrooper {self.nombre} de rango {self.rango} creado con éxito")
 
+trooper = Stormtrooper("TS-1135", "Cabo")
+print(trooper.nombre)  
+print(trooper.rango)  
+
 ## Crea una lista con un numero arbitrario de objetos tipo Stormtropper.
 troopers = [Stormtrooper("Finn", "Cabo"), Stormtrooper("Phasma", "Capitán"), Stormtrooper("Rey", "Cabo")]   
 
@@ -24,3 +28,6 @@ class Stormtrooper:
             return "Bueno"
         else:
             return "Regular"
+            
+trooper = Stormtrooper("TS-1135", "Cabo")
+print(trooper.calificacion())
